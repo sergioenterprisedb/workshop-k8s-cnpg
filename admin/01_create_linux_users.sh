@@ -54,7 +54,7 @@ do
 
         # Alias bat
         #echo "alias cat='bat -pp'" >> /home/${USERNAME}/.bash_profile
-        echo 'export PATH="$HOME/.cargo/bin:$PATH"' /home/${USERNAME}/.bashrc
+        echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> /home/${USERNAME}/.bashrc
 
         # Alias gets
         echo "alias gc='${SOURCE_ADMIN_PATH}/get_clusters.sh'" >> /home/${USERNAME}/.bash_profile
