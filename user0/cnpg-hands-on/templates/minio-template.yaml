@@ -14,8 +14,8 @@ spec:
       secretAccessKey:
         name: minio-creds
         key: MINIO_SECRET_KEY
-    wal:
-      compression: gzip
+    #wal:
+    #  compression: gzip
   instanceSidecarConfiguration:
     retentionPolicyIntervalSeconds: 1800
     resources:
