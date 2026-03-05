@@ -65,8 +65,8 @@ do
         sudo chmod +x /etc/profile.d/k3d.sh
 
         # Copy get files
-        cp ${SOURCE_ADMIN_PATH}/get_clusters.sh /home/${USERNAME}/.
-        cp ${SOURCE_ADMIN_PATH}/get_pods.sh /home/${USERNAME}/.
+        cp ${SOURCE_ADMIN_PATH}/get_clusters.sh /home/${USERNAME}/cnpg-hands-on/.
+        cp ${SOURCE_ADMIN_PATH}/get_pods.sh /home/${USERNAME}/cnpg-hands-on/.
 
     fi
 
