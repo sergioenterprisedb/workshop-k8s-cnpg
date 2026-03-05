@@ -57,8 +57,8 @@ do
         echo "export PATH='$HOME/.cargo/bin:$PATH'" >> /home/${USERNAME}/.bashrc
 
         # Alias gets
-        echo "alias gc='${SOURCE_CNP_PATH}/get_clusters.sh'" >> /home/${USERNAME}/.bash_profile
-        echo "alias gp='${SOURCE_CNP_PATH}/get_pods.sh'" >> /home/${USERNAME}/.bash_profile
+        echo "alias gc='/home/${USERNAME}/cnpg-hands-on/get_clusters.sh'" >> /home/${USERNAME}/.bash_profile
+        echo "alias gp='/home/${USERNAME}/cnpg-hands-on/get_pods.sh'" >> /home/${USERNAME}/.bash_profile
         
         # Kubeconfig k3d
         echo "export KUBECONFIG=/usr/local/share/k8s/k3d-config" > /etc/profile.d/k3d.sh
