@@ -44,14 +44,6 @@ spec:
     size: $postgres_storage
   walStorage:
     size: $postgres_wal_storage
-  tablespaces:
-  - name: idxtbs
-    storage:
-      size: $postgres_idx_storage
-  - name: tmptbs
-    temporary: true
-    storage:
-      size: $postgres_tmp_storage
 
   resources:
     requests:
