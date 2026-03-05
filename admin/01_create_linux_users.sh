@@ -54,15 +54,19 @@ do
 
         # Alias bat
         #echo "alias cat='bat -pp'" >> /home/${USERNAME}/.bash_profile
-        echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> /home/${USERNAME}/.bashrc
+        echo "export PATH='$HOME/.cargo/bin:$PATH'" >> /home/${USERNAME}/.bashrc
 
         # Alias gets
-        echo "alias gc='${SOURCE_ADMIN_PATH}/get_clusters.sh'" >> /home/${USERNAME}/.bash_profile
-        echo "alias gp='${SOURCE_ADMIN_PATH}/get_pods.sh'" >> /home/${USERNAME}/.bash_profile
+        echo "alias gc='${SOURCE_CNP_PATH}/get_clusters.sh'" >> /home/${USERNAME}/.bash_profile
+        echo "alias gp='${SOURCE_CNP_PATH}/get_pods.sh'" >> /home/${USERNAME}/.bash_profile
         
         # Kubeconfig k3d
         echo "export KUBECONFIG=/usr/local/share/k8s/k3d-config" > /etc/profile.d/k3d.sh
         sudo chmod +x /etc/profile.d/k3d.sh
+
+        # Copy get files
+        cp ${SOURCE_ADMIN_PATH}/get_clusters.sh /home/${USERNAME}/.
+        cp ${SOURCE_ADMIN_PATH}/get_pods.sh /home/${USERNAME}/.
 
     fi
 
