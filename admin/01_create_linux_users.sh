@@ -53,7 +53,8 @@ do
         echo "cd cnpg-hands-on && ./set_context.sh" >> /home/${USERNAME}/.bash_profile
 
         # Alias bat
-        echo "alias cat='bat -pp'" >> /home/${USERNAME}/.bash_profile
+        #echo "alias cat='bat -pp'" >> /home/${USERNAME}/.bash_profile
+        echo 'export PATH="$HOME/.cargo/bin:$PATH"' /home/${USERNAME}/.bashrc
 
         # Alias gets
         echo "alias gc='/${ENV_USER}/admin/get_clusters.sh'" >> /home/${USERNAME}/.bash_profile
@@ -67,4 +68,4 @@ do
 
 done
 
-echo "Finished creating $USER_COUNT users."
+echo "Finished creating $TOTAL_USERS users."
