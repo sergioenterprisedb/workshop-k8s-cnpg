@@ -15,7 +15,6 @@ ${kubectl_cmd} apply -f \
 # Wait for the deployments to be ready
 print_info "\n"
 print_info "Waiting for cert-manager to be ready...\n"
-#${kubectl_cmd} wait --for=condition=Available deployment --all -n cert-manager --timeout=300s
 ${kubectl_cmd} rollout status deployment -n cert-manager
 cmctl check api --wait=2m
 

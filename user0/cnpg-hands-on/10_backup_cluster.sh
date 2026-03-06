@@ -2,10 +2,8 @@
 
 source ./config.sh
 
-#Doc
-echo "10" > ./docs/docid
-
 # Delete backup file
+print_info "Deleting backup...\n"
 print_command "${kubectl_cmd} delete -f ./yaml/backup.yaml\n"
 ${kubectl_cmd} delete -f $TMP/backup.yaml > /dev/null 2>&1 
 
