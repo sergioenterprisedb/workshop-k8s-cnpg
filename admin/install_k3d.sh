@@ -17,6 +17,12 @@ sg docker -c "k3d cluster create ${K3D_CLUSTER} \
   -v '/mnt/disk2:/var/lib/rancher/k3s/storage@agent:1' \
   -v '/mnt/disk3:/var/lib/rancher/k3s/storage@agent:2'"
 
+# 1. Create a local kubeconfig directory if it doesn't exist
+mkdir -p ~/.kube
+sg docker -c "k3d kubeconfig get ${K3D_CLUSTER}" > ~/.kube/config
+export KUBECONFIG=~/.kube/config
+kubectl cluster-info
+
 docker exec -it k3d-workshop-agent-0 df -h | grep storage
 docker exec -it k3d-workshop-agent-1 df -h | grep storage
 docker exec -it k3d-workshop-agent-2 df -h | grep storage
@@ -26,7 +32,8 @@ kubectl label node k3d-workshop-agent-1 role=postgres-node
 kubectl label node k3d-workshop-agent-2 role=postgres-node
 
 # Ports
-#sg docker -c"k3d cluster edit test --port-add '9001:9001@loadbalancer'"
+#sg docker -c "k3d cluster edit workshop --port-add '9001:9001@loadbalancer'"
+#sg docker -c "k3d cluster edit workshop --port-add '9000:9000@loadbalancer'"
 
 # Check open ports
 docker ps --filter "name=serverlb" --format "table {{.Names}}\t{{.Ports}}"
@@ -34,5 +41,6 @@ docker ps --filter "name=serverlb" --format "table {{.Names}}\t{{.Ports}}"
 # Share k8s config file
 sudo mkdir -p /usr/local/share/k8s
 sudo chmod 755 /usr/local/share/k8s
-sg docker -c "k3d kubeconfig get ${K3D_CLUSTER} | sudo tee /usr/local/share/k8s/k3d-config > /dev/null"
+#sg docker -c "k3d kubeconfig get ${K3D_CLUSTER} | sudo tee /usr/local/share/k8s/k3d-config > /dev/null"
+cp ~/.kube/config /usr/local/share/k8s/k3d-config
 sudo chmod 644 /usr/local/share/k8s/k3d-config
