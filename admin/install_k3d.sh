@@ -35,8 +35,11 @@ kubectl label node k3d-workshop-agent-2 role=postgres-node
 #sg docker -c "k3d cluster edit workshop --port-add '9001:9001@loadbalancer'"
 #sg docker -c "k3d cluster edit workshop --port-add '9000:9000@loadbalancer'"
 #Minio
-sg docker -c "k3d cluster edit workshop --port-add '9090:9090@loadbalancer'"
+#sg docker -c "k3d cluster edit workshop --port-add '9090:9090@loadbalancer'"
 # create minio Load Balancer
+sg docker -c "k3d cluster edit workshop --port-add '9010:9010@loadbalancer'"
+# Grafana
+sg docker -c "k3d cluster edit workshop --port-add '3010:3010@loadbalancer'"
 
 # Check open ports
 docker ps --filter "name=serverlb" --format "table {{.Names}}\t{{.Ports}}"

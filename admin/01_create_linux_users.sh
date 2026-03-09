@@ -59,6 +59,7 @@ do
         # Copy get files
         cp ${SOURCE_ADMIN_PATH}/get_clusters.sh /home/${USERNAME}/cnpg-hands-on/.
         cp ${SOURCE_ADMIN_PATH}/get_pods.sh /home/${USERNAME}/cnpg-hands-on/.
+        cp ${SOURCE_ADMIN_PATH}/get_status.sh /home/${USERNAME}/cnpg-hands-on/.
 
         # Alias gets
         echo "alias gc='/home/${USERNAME}/cnpg-hands-on/get_clusters.sh'" >> /home/${USERNAME}/.bash_profile
