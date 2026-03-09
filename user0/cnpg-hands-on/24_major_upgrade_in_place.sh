@@ -7,7 +7,7 @@ envsubst < templates/cluster-example-major-upgrade-inplace-template.yaml > $TMP/
 
 # Diff old vs new config
 clear
-print_command "diff -a --suppress-common-lines -y $TMP/cluster-example-minor-upgrade.yaml $TMP/${cluster_name}-major-upgrade-inplace.yaml\n"
+print_command "diff -a --suppress-common-lines -y $TMP/${cluster-name}-minor-upgrade.yaml $TMP/${cluster_name}-major-upgrade-inplace.yaml\n"
 diff -a --suppress-common-lines -y $TMP/cluster-example-minor-upgrade.yaml $TMP/${cluster_name}-major-upgrade-inplace.yaml
 
 sleep 5
