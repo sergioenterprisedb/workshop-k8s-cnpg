@@ -71,9 +71,4 @@ spec:
   podMetricsEndpoints:
   - port: metrics
     scheme: https
-    tlsConfig:
-      ca:
-        secret:
-          name: ${cluster_name}-ca
-          key: ca.crt
-      serverName: ${cluster_name}-rw
+
