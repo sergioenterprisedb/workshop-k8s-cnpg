@@ -32,10 +32,10 @@ do
         cp -r ${SOURCE_CNP_PATH}/ /home/${USERNAME}
 
         # Delete admin scripts in users
-        rm /home/${USERNAME}/01_install_plugin.sh
-        rm /home/${USERNAME}/02_install_operator.sh
-        rm /home/${USERNAME}/03_check_operator_installed.sh
-        rm /home/${USERNAME}/04_install_barman_plugin.sh
+        rm /home/${USERNAME}/cnpg-hands-on/01_install_plugin.sh
+        rm /home/${USERNAME}/cnpg-hands-on/02_install_operator.sh
+        rm /home/${USERNAME}/cnpg-hands-on/03_check_operator_installed.sh
+        rm /home/${USERNAME}/cnpg-hands-on/04_install_barman_plugin.sh
 
         # Grant permissions
         chown -R "${USERNAME}:${USERNAME}" "/home/${USERNAME}"

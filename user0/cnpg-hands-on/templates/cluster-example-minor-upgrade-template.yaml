@@ -1,12 +1,3 @@
-apiVersion: v1
-data:
-  password: dU4zaTFIaDBiWWJDYzRUeVZBYWNCaG1TemdxdHpxeG1PVmpBbjBRSUNoc0pyU211OVBZMmZ3MnE4RUtLTHBaOQ==
-  username: cG9zdGdyZXM=
-kind: Secret
-metadata:
-  name: cluster-example-superuser
-type: kubernetes.io/basic-auth
----
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
