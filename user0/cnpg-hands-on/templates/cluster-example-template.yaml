@@ -70,5 +70,3 @@ spec:
       "cnpg.io/cluster": ${cluster_name}
   podMetricsEndpoints:
   - port: metrics
-    scheme: https
-
