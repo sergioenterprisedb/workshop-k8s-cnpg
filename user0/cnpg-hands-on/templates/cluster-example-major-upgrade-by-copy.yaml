@@ -36,6 +36,3 @@ spec:
     limits:
       memory: "${postgres_memory}"
       cpu: "${postgres_cpu}"
-
-  #monitoring:
-  #  enablePodMonitor: true

@@ -47,9 +47,6 @@ spec:
   walStorage:
     size: $postgres_wal_storage
 
-  #monitoring:
-  #  enablePodMonitor: true
-
   resources:
     requests:
       memory: "${postgres_memory}"
