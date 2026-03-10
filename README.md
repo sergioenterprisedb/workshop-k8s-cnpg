@@ -1,7 +1,60 @@
+# Workshop: CloudNativePG Demo on EC2 (k3d + Docker)
 
+This repository demonstrates how to run and operate a **PostgreSQL high-availability cluster on Kubernetes** using **CloudNativePG / EDB Postgres for Kubernetes Operator**.
 
-# Description
-This workshop demo needs an AWS EC2 instance with this configuration:
+The demo environment runs on:
+
+- **AWS EC2**
+- **Docker**
+- **k3d (K3s in Docker)**
+- **MinIO (S3 compatible storage)** for backups
+
+It walks through common **Day-1 and Day-2 operations** for PostgreSQL in Kubernetes.
+This demos have been built to run in a multiuser linux environment.
+
+---
+
+# Architecture
+```
+EC2 Instance
+│
+├─ Docker
+│
+├─ k3d Kubernetes cluster
+│   │
+│   ├─ CloudNativePG / EDB Postgres for Kubernetes Operator
+│   │
+│   └─ PostgreSQL Cluster
+│       ├─ Primary
+│       ├─ Replica 1
+│       └─ Replica 2
+│
+└─ MinIO (S3 Compatible Object Storage)
+└─ Backups / WAL archive
+```
+# Features
+# Features Demonstrated
+
+This repository demonstrates the following operational capabilities:
+
+| Feature | Description |
+|------|------|
+| Kubernetes Plugin Install | Install `kubectl-cnpg` plugins for PostgreSQL cluster management |
+| Operator Install | Deploy **CloudNativePG operator** |
+| PostgreSQL Cluster Deployment | Create a highly available PostgreSQL cluster |
+| Insert Data | Demonstrate workload operations |
+| Switchover | Promote a replica manually |
+| Failover | Automatic promotion when primary fails |
+| Backup | Backup cluster to **MinIO S3 storage** |
+| Recovery | Restore cluster from backup |
+| Scaling | Scale replicas up and down |
+| Rolling Updates | Minor and major PostgreSQL upgrades |
+| Fencing | Isolate a node to prevent split brain |
+| Monitoring | Use Grafana to monitor cluster health |
+| Operator Upgrade | Upgrade Kubernetes operator |
+
+# Prerequisites
+This workshop needs an AWS EC2 instance with this configuration:
 - CPUs: Minimum 8 cpu's
 - RAM: 32GB
 - Storage:
@@ -33,6 +86,7 @@ Install main components:
 - Docker
 - k3d
 - kubectl
+- helm
 
 And other software:
 -  bat
@@ -42,7 +96,8 @@ And other software:
 
 With ec2-user:
 ```
-install_EC2.sh
+cd workshop-k8s/admin/
+./install_EC2.sh
 ```
 ## Install minio
 Execute:
@@ -79,7 +134,7 @@ Shell In A Box implements a web server that can export arbitrary command line to
 ./install_shellinabox.sh
 ```
 
-## Install linux users
+## Create linux users
 By default, 10 users are created in the Linux VM. The file `config.sh` contain the configuration:
 ```
 cd ~/workshop-k8s/admin/
