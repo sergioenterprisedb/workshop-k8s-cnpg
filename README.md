@@ -23,16 +23,23 @@ EC2 Instance
 ├─ k3d Kubernetes cluster
 │   │
 │   ├─ CloudNativePG / EDB Postgres for Kubernetes Operator
-│   │
+│   ├─ MinIO (S3 Compatible Object Storage)
+│   └─ Grafana/Prometheus
+│
+├─ User1
 │   └─ PostgreSQL Cluster
 │       ├─ Primary
 │       ├─ Replica 1
 │       └─ Replica 2
-│
-└─ MinIO (S3 Compatible Object Storage)
-└─ Backups / WAL archive
+...
+├─ UserN
+│   └─ PostgreSQL Cluster
+│       ├─ Primary
+│       ├─ Replica 1
+│       └─ Replica 2
 ```
-# Features
+![Architecture](./images/ec2-k8s-cloudnativepg-architecture.jpg)
+
 # Features Demonstrated
 
 This repository demonstrates the following operational capabilities:
@@ -109,6 +116,7 @@ After installation, you can access to MinIO with:
 - User: `admin`
 - Password: `password`
 - URL: `http://<ec2_public_ip>:9010/`
+![MinIO](./images/minio.jpg)
 
 ## Install Prometheus and Grafana
 Execute:
@@ -126,7 +134,9 @@ Install CloudNativePG dashboard:
 - Import this [CloudnativePG Grafana dashboard file](https://github.com/cloudnative-pg/grafana-dashboards/blob/main/charts/cluster/grafana-dashboard.json)
 - Load dashboard
 
-A new dashboard CloudNativePG is loaded
+A new dashboard CloudNativePG is loaded.
+![Grafana](./images/grafana.jpg)
+
 
 ## Install Shellinabox
 Shell In A Box implements a web server that can export arbitrary command line tools to a web based terminal emulator. This emulator is accessible to any JavaScript and CSS enabled web browser and does not require any additional browser plugins.
