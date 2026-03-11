@@ -44,21 +44,21 @@ EC2 Instance
 
 This repository demonstrates the following operational capabilities:
 
-| Feature | Description |
-|------|------|
-| Kubernetes Plugin Install | Install `kubectl-cnpg` plugins for PostgreSQL cluster management |
-| Operator Install | Deploy **CloudNativePG operator** |
-| PostgreSQL Cluster Deployment | Create a highly available PostgreSQL cluster |
-| Insert Data | Demonstrate workload operations |
-| Switchover | Promote a replica manually |
-| Failover | Automatic promotion when primary fails |
-| Backup | Backup cluster to **MinIO S3 storage** |
-| Recovery | Restore cluster from backup |
-| Scaling | Scale replicas up and down |
-| Rolling Updates | Minor and major PostgreSQL upgrades |
-| Fencing | Isolate a node to prevent split brain |
-| Monitoring | Use Grafana to monitor cluster health |
-| Operator Upgrade | Upgrade Kubernetes operator |
+| Who   | Feature                       | Description                                                      |
+|-------|-------------------------------|------------------------------------------------------------------|
+| Admin | Kubernetes Plugin Install     | Install `kubectl-cnpg` plugins for PostgreSQL cluster management |
+| Admin | Operator Install              | Deploy **CloudNativePG operator**                                |
+| DBA   | PostgreSQL Cluster Deployment | Create a highly available PostgreSQL cluster                     |
+| DBA   | Insert Data                   | Demonstrate workload operations                                  |
+| DBA   | Switchover                    | Promote a replica manually                                       |
+| DBA   | Failover                      | Automatic promotion when primary fails                           |
+| DBA   | Backup                        | Backup cluster to **MinIO S3 storage**                           |
+| DBA   | Recovery                      | Restore cluster from backup                                      |
+| DBA   | Scaling                       | Scale replicas up and down                                       |
+| DBA   | Rolling Updates               | Minor and major PostgreSQL upgrades                              |
+| DBA   | Fencing                       | Isolate a node to prevent split brain                            |
+| DBA   | Monitoring                    | Use Grafana to monitor cluster health                            |
+| DBA   | Operator Upgrade              | Upgrade Kubernetes operator                                      |
 
 # Prerequisites
 This workshop needs an AWS EC2 instance with this configuration:
