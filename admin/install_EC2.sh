@@ -70,3 +70,8 @@ echo 'complete -o default -F __start_kubectl k' >> /home/ec2-user/.bash_profile
 #echo "alias gc='/home/ec2-user/workshop-k8s/admin/get_clusters.sh'" >> /home/${ENV_USER}/.bash_profile
 #echo "alias gp='/home/ec2-user/workshop-k8s/admin/get_pods.sh'" >> /home/${ENV_USER}/.bash_profile
 #echo "alias gs='/home/ec2-user/workshop-k8s/admin/get_status.sh'" >> /home/${ENV_USER}/.bash_profile
+
+# Limits
+sudo sysctl fs.inotify.max_user_watches=524288
+sudo sysctl fs.inotify.max_user_instances=512
+sudo sysctl -p

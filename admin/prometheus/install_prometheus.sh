@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . ./config.sh
-. ../user0/cnpg-hands-on/commands.sh
+. ../../user0/cnpg-hands-on/commands.sh
 
 # Install helm
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3

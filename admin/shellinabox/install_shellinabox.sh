@@ -1,22 +1,23 @@
 #!/bin/bash
 
-yum install git openssl-devel pam-devel zlib-devel autoconf automake libtool
+sudo yum install -y git openssl-devel pam-devel zlib-devel autoconf automake libtool
 git clone https://github.com/shellinabox/shellinabox.git && cd shellinabox
+cd shellinabox/
 autoreconf -i
+./configure --disable-ssl && make
 
 # Config
 CSS_FILE="/etc/shellinabox/options-enabled/black.css"
 sudo mkdir -p /etc/shellinabox/options-enabled
 
 sudo tee $CSS_FILE > /dev/null <<'EOF'
-/* Terminal Background */
-/* Deep Charcoal Background */
-terminal, .ansi_background_default { 
+#shellinabox terminal, 
+#shellinabox .ansi_background_default { 
     background-color: #2E3440 !important; 
+    color: #D8DEE9 !important;
 }
 
-/* Soft White Text */
-terminal, .ansi_foreground_default { 
+#shellinabox .ansi_foreground_default { 
     color: #D8DEE9 !important; 
 }
 
@@ -26,6 +27,9 @@ terminal, .ansi_foreground_default {
     color: #ECEFF4;
 }
 EOF
+
+sudo chmod 755 /etc/shellinabox
+sudo chmod 644 $CSS_FILE 
 
 sudo tee /etc/systemd/system/shellinabox.service > /dev/null <<'EOF'
 [Unit]
@@ -38,8 +42,7 @@ After=network.target
 # Group=username
 #    --background=/var/run/shellinaboxd.pid \
 
-
-ExecStart=/home/ec2-user/shellinabox/shellinaboxd \
+ExecStart=/home/ec2-user/workshop-k8s/admin/shellinabox/shellinabox/shellinaboxd \
     --port=4200 \
     --css=/etc/shellinabox/options-enabled/black.css \
     --service=/:LOGIN
@@ -55,3 +58,5 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable shellinabox.service
 sudo systemctl start shellinabox.service
+sudo systemctl status shellinabox.service
+#/home/ec2-user/workshop-k8s/admin/shellinabox/shellinabox/shellinaboxd --port=4200

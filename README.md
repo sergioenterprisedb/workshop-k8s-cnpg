@@ -167,9 +167,11 @@ After installation, you can access to MinIO with:
 - URL: http://<ec2_public_ip>:3010/login
 
 Install CloudNativePG dashboard:
-- In Grafana, go to Dashboard -> New -> Import
+- In Grafana, go to Dashboards -> New -> Import
 - Import this [CloudnativePG Grafana dashboard file](https://github.com/cloudnative-pg/grafana-dashboards/blob/main/charts/cluster/grafana-dashboard.json)
 - Load dashboard
+- DS_PROMETHEUS: Select a prometheus data source: Prometheus
+- Import
 
 A new dashboard CloudNativePG is loaded.
 
@@ -179,14 +181,17 @@ A new dashboard CloudNativePG is loaded.
 ### Install Shellinabox
 Shell In A Box implements a web server that can export arbitrary command line tools to a web based terminal emulator. This emulator is accessible to any JavaScript and CSS enabled web browser and does not require any additional browser plugins.
 ```
+cd ~/workshop-k8s/admin/shellinabox
 ./install_shellinabox.sh
 ```
+Verify the connection to the environment:
+- URL: `http://<your_EC2_ip>:4200`
 
 ### Create linux users
 By default, 10 users are created in the Linux VM. The file `config.sh` contain the configuration:
 ```
 cd ~/workshop-k8s/admin/
-./create_linux_users.sh
+sudo ./create_linux_users.sh
 ```
 ### Postgres cluster tasks
 The workshop admin have to connect with ec2-user and exeute these commands:
