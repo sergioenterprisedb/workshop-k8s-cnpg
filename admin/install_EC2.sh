@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Logs
+mkdir -p ./log
+LOG_FILE="./log/cleanup_$(date +'%Y%m%d_%H%M%S').log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
 # Install AWS EC2 Amazon Linux 2023
 sudo dnf -y install docker
 

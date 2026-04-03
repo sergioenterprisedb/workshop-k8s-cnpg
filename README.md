@@ -65,7 +65,7 @@ This repository demonstrates the following operational capabilities:
 | DBA   | Monitoring                    | Use Grafana to monitor cluster health                            |
 | DBA   | Operator Upgrade              | Upgrade Kubernetes operator                                      |
 
-# Prerequisites
+# Create AWS EC2 instance 
 This workshop needs an AWS EC2 instance with this configuration:
 - OS: AWS Linux (Ubuntu)
 - Instance type: Tested with t2.2xLarge instance (8 vCPUs and 32GiB RAM)
@@ -94,6 +94,19 @@ To be able to access to the EC2 VM, Grafana and Minio, it is necessary to create
 - Minio
   - Type: Custom TCP
   - Port: 9010
+
+## How to create the instance
+Prerequisites: AWS cli
+How to install AWS cli: [link](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+In your laptop, execute this script:
+```
+./create_EC2_stack.sh
+```
+## Cleanup EC2 environment
+```
+./delete_EC2_stack.sh
+```
 
 ## Admin users
 ### Installation
@@ -133,7 +146,7 @@ cd ~/workshop-k8s/admin/
 Execute:
 ```
 cd ~/workshop-k8s/admin/minio
-install_minio.sh
+./install_minio.sh
 ```
 After installation, you can access to MinIO with:
 - User: `admin`
