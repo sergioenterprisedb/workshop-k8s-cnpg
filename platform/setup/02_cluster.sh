@@ -174,31 +174,39 @@ EOF
 
 install_minio() {
   log_section "Installing MinIO"
-  helm repo add minio https://charts.min.io/ >/dev/null 2>&1
 
+  helm repo add minio https://charts.min.io/ >/dev/null 2>&1
   helm repo update >/dev/null 2>&1
 
   helm upgrade --install minio minio/minio \
+    --version 5.4.0 \
     --namespace object-storage \
     --create-namespace \
-    --set rootUser="${MINIO_ROOT_USER}" \
-    --set rootPassword="${MINIO_ROOT_PASSWORD}" \
+    --set-string rootUser="${MINIO_ROOT_USER}" \
+    --set-string rootPassword="${MINIO_ROOT_PASSWORD}" \
     --set mode=standalone \
     --set replicas=1 \
     --set persistence.enabled=true \
     --set persistence.size=10Gi \
     --set service.type=LoadBalancer \
     --set consoleService.type=LoadBalancer \
-    --set nodeSelector."node\.workshop/role"=platform \
-    --set buckets[0].name="cnpg" \
-    --set buckets[0].policy=none \
-    --set buckets[0].purge=false \
+    --set 'nodeSelector.node\.workshop/role=platform' \
+    --set 'buckets[0].name=cnpg' \
+    --set 'buckets[0].policy=none' \
+    --set 'buckets[0].purge=false' \
+    --set image.repository=dappros/minio \
+    --set image.tag=RELEASE.2025-09-07T16-13-09Z \
+    --set mcImage.repository=netiedge/minio-mc \
+    --set mcImage.tag=RELEASE.2025-01-17T23-25-50Z \
+    --set resources.requests.memory=512Mi \
+    --set resources.limits.memory=1Gi \
     --wait \
-    --timeout 180s >/dev/null 2>&1
+    --timeout 300s >/dev/null 2>&1
 
-  # Pod selector matches the one used elsewhere in the project (-l app=minio).
+  # Verify MinIO pod status
   kubectl -n object-storage get pods -l app=minio \
     -o jsonpath='{.items[*].status.phase}' | grep -q "Running" >/dev/null 2>&1
+
   log_success "MinIO available on port ${MINIO_CONSOLE_PORT}"
 }
 
